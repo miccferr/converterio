@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # electron-react-boilerplate
 
 [![NPM version][npm-image]][npm-url]
@@ -125,7 +124,3 @@ MIT © [C. T. Lin](https://github.com/chentsulin)
 [travis-url]: https://travis-ci.org/chentsulin/electron-react-boilerplate
 [david_img]: https://img.shields.io/david/chentsulin/electron-react-boilerplate.svg
 [david_site]: https://david-dm.org/chentsulin/electron-react-boilerplate
-=======
-# converterio
-toy electron coords. converter app
->>>>>>> 5ba1b60149b12fa8b40f8093ff64b235fe59c17b
