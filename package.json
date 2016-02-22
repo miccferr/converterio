@@ -1,0 +1,22 @@
+{
+  "name": "converterio",
+  "version": "1.0.0",
+  "description": "### Rationale The main motif for starting this project boils down to a simplistic attempt to learn new _cool catz_ technologies (i.e. React, Electron, Webpack, ES6). And in general, as an excuse to become a better geospatial dev, while still building something remotely useful.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miccferr/converterio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miccferr/converterio/issues"
+  },
+  "homepage": "https://github.com/miccferr/converterio#readme",
+  "devDependencies": {
+    "budo": "^8.0.4"
+  }
+}
