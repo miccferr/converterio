@@ -15,7 +15,10 @@ In this sense, Converterio aims to contribute to the ongoing discourse on the No
 TODO
 #### dev
 To start [Budo](https://github.com/mattdesl/budo) dev server:
+
 `node_modules/budo/bin/cmd.js js/landio.js --live`
+
+or alternatively `npm run dev-server`
 
 
 #### Original UI Design for the Gh-Pages website
