@@ -3,6 +3,10 @@ import FlatButton from 'material-ui/lib/flat-button';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 
+import geojsontoosm from 'geojsontoosm';
+import ioDialog from "./helpers/ioDialog";
+
+
 const styles = {
   headline: {
     fontSize: 24,
@@ -20,7 +24,7 @@ const LoadTab = React.createClass({
 render() {
 return (
       <div>
-        <FlatButton label="Load File" />
+        <FlatButton label="Load File" onClick={ioDialog.openFile} />
         <p><span>devi passare il nome del file</span></p>
       </div>
     );
@@ -31,7 +35,7 @@ const SaveTab = React.createClass({
   render() {
     return (
       <div>
-        <FlatButton label="Save File" />
+        <FlatButton label="Save File" onClick={ioDialog.saveFile}  />
         <p><span>devi passare il nome del file</span></p>
       </div>
     );

@@ -55,7 +55,11 @@ let ioDialog  = {
       this.inputFileClosed = fileName;
       // stores crs to be saved
       function saveCRS() {
-        var crs = document.getElementById("crs").value
+        // var crs = document.getElementById("crs")
+        // var crs = this.refs.myInput.state.entryValue;
+        var crs = this.refs
+        console.log(crs);
+
         var number = +parseInt(crs);
         // console.log(Number.isInteger(crs));
         if (crs.value === "" || number != number) {
