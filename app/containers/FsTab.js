@@ -36,7 +36,7 @@ const SaveTab = React.createClass({
     return (
       <div>
         <FlatButton label="Save File" onClick={ioDialog.saveFile}  />
-        <p><span>devi passare il nome del file</span></p>
+        <p><span>devi passare il nome del file</span>{this.props.epsg}</p>
       </div>
     );
   }

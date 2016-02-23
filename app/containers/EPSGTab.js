@@ -1,19 +1,22 @@
 import React from 'react';
 import {Typeahead} from 'react-typeahead';
+import json from "../data/epsg.json";
 
+const epsg_descrArr =  []
+json.results.collection1.map( (item) =>  epsg_descrArr.push(item.li_elem) )
+// this.onUpdate(item)
 
 export default class EPSGTab extends React.Component {
 
   render() {
-    const epsg_descrArr =  []
-    this.props.epsgData.map( (item) =>  epsg_descrArr.push(item.li_elem) )
     return (
       <div>
       <Typeahead
         ref='crs'
+        {/*onUpdate = {this.updateFun}*/}
         options={epsg_descrArr}
         maxVisible={20}
-        onOptionSelected={(opz)=>{this.props.optionChosen=opz;}}
+        onOptionSelected={ (item) =>  this.props.updateFun(item) }
       />
 
     </div>
@@ -28,3 +31,7 @@ export default class EPSGTab extends React.Component {
 // index: 1
 // li_elem: "EPSG:2000: Anguilla 1957 / British West Indies Grid"
 // url: "http://spatialreference.org/ref/epsg/?page=1"
+
+
+
+// onOptionSelected={(opz)=>{this.props.optionChosen=opz;}}
