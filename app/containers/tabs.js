@@ -4,30 +4,18 @@ import Tab from 'material-ui/lib/tabs/tab';
 import {LoadTab, SaveTab} from './FsTab';
 import EPSGTab from './EPSGTab';
 
-
-// import {Typeahead} from 'react-typeahead';
-// import json from "../data/epsg.json";
-//
-// const epsg_descrArr =  []
-// json.results.collection1.map( (item) =>  epsg_descrArr.push(item.li_elem) )
-
-
-
-
-// const optionChosen;
-
 const TabsMenu = React.createClass({
   getInitialState()  {
       return ({
-          epsg: '4362'
+          epsg: ''
       });
   },
 
   onUpdate(val) {
-    console.log('loggin the root Component', this.state.data);
       this.setState({
           epsg: val
       });
+
   },
 
   render() {
@@ -48,6 +36,3 @@ const TabsMenu = React.createClass({
 })
 
 export default TabsMenu;
-// <Tab label="Menu">
-//   <EPSGTab />
-//   </Tab>

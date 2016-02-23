@@ -13,7 +13,6 @@ export default class EPSGTab extends React.Component {
       <div>
       <Typeahead
         ref='crs'
-        {/*onUpdate = {this.updateFun}*/}
         options={epsg_descrArr}
         maxVisible={20}
         onOptionSelected={ (item) =>  this.props.updateFun(item) }
@@ -23,15 +22,3 @@ export default class EPSGTab extends React.Component {
     )
   };
 };
-
-
-// 0: Object
-// epsg_code: "2000"
-// epsg_description: "Anguilla 1957 / British West Indies Grid"
-// index: 1
-// li_elem: "EPSG:2000: Anguilla 1957 / British West Indies Grid"
-// url: "http://spatialreference.org/ref/epsg/?page=1"
-
-
-
-// onOptionSelected={(opz)=>{this.props.optionChosen=opz;}}
