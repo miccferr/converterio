@@ -20,8 +20,8 @@ let filtersListClose = filtersListOpen.slice(0, 2);
 
 let ioDialog  = {
 
-  inputFileOpen: '',
-
+  inputFileOpen: 'nfsjdj',
+  testa: 'croce',
   inputFileClosed: '',
 
   openFile: function () {
@@ -33,14 +33,10 @@ let ioDialog  = {
         return;
       } else {
         var fileName = fileNames[0];
-        // gdal.open(fileName, function () {
-        //   document.getElementById("editor").value = 'Loaded data';
-        // });
-        // fs.readFile(fileName, 'utf-8', function (err, data) {
-        //   document.getElementById("editor").value = data;
-        // });
-        // stores input file name
+        console.log(fileName);
         this.inputFileOpen = fileName;
+        console.log(this.inputFileOpen);
+
       }
     });
   },
@@ -70,7 +66,7 @@ let ioDialog  = {
         }
 
       }
-      var crs = saveCRS()
+      let crs = saveCRS()
       console.log(writeConvertedFile);
         // funzione gdal per convertire e trasformare.
         // Uso gdal write al posto di fs writeFile per scrivere nuovo file

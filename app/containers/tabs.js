@@ -10,7 +10,6 @@ const TabsMenu = React.createClass({
           epsg: ''
       });
   },
-
   onUpdate(val) {
       this.setState({
           epsg: val

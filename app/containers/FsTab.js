@@ -21,11 +21,13 @@ function handleActive(tab) {
 }
 
 const LoadTab = React.createClass({
+getInitialState() { return ({text:''}) },
+onUpdate() {this.setState((value)=> {text:value}) },
 render() {
 return (
       <div>
-        <FlatButton label="Load File" onClick={ioDialog.openFile} />
-        <p><span>devi passare il nome del file</span></p>
+        <FlatButton label="Load File" onClick={ioDialog.openFile}  />
+        <p><span>File loaded {  ioDialog.inputFileOpen }</span></p>
       </div>
     );
   }
