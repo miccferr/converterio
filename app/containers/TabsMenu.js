@@ -45,13 +45,14 @@ class TabsMenu extends React.Component {
     };
   }
 
-  getInitialState()  {
-      return ({
-          epsg: ''
-      });
-  }
+  // getInitialState()  {
+  //     return ({
+  //         epsg: ''
+  //     });
+  // }
 
   onUpdate(val) {
+    console.log(this);
       this.setState({
           epsg: val
       });
@@ -115,7 +116,9 @@ class TabsMenu extends React.Component {
               <LoadTab />
             </Tab>
             <Tab label="Reproject" >
-              <EPSGTab updateFun={this.onUpdate}/>
+              {/*TODO remove bind with arrow fun?*/}
+              <EPSGTab updateFun={this.onUpdate.bind(this)}/>
+
             </Tab>
             <Tab label="Save File" >
               <SaveTab epsg={this.state.epsg} />
