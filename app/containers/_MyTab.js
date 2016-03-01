@@ -3,33 +3,6 @@ import FlatButton from 'material-ui/lib/flat-button';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 
-const remote = require('electron').remote;
-const dialog = remote.require('dialog');
-import * as fs from 'fs';
-
-import {default as writeConvertedFile} from './helpers/convert';
-
-let filtersListOpen = [{
-  name: 'GeoJSON',
-  extensions: ['geojson']
-}, {
-  name: 'ESRI Shapefile',
-  extensions: ['shp']
-}, {
-  name: 'OSM',
-  extensions: ['osm']
-}];
-
-let filtersListClose = filtersListOpen.slice(0, 2);
-
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-};
 
 
 
@@ -38,12 +11,14 @@ class MyTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputFileOpen: ''
+      inputFile: '',
+      epsg: '',
+      outputFile: ''
     };
   }
 
 
-    onUpdate() {this.setState((value)=> {inputFileOpen:value}) }
+    onUpdate() {this.setState((value)=> {inputFile:value}) }
 
     openFile() {
       dialog.showOpenDialog({
@@ -55,7 +30,7 @@ class MyTab extends React.Component {
         } else {
           var fileName = fileNames[0];
           console.log(fileName);
-          this.state.inputFileOpen = fileName;
+          this.state.inputFile = fileName;
           console.log(this);
 
         }
@@ -91,7 +66,7 @@ class MyTab extends React.Component {
         console.log(writeConvertedFile);
           // funzione gdal per convertire e trasformare.
           // Uso gdal write al posto di fs writeFile per scrivere nuovo file
-        writeConvertedFile(this.inputFileOpen, this.inputFileClosed, crs, err);
+        writeConvertedFile(this.inputFile, this.inputFileClosed, crs, err);
       });
     }
 

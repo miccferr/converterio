@@ -33,19 +33,9 @@ return (
   }
 });
 
-const SaveTab = React.createClass({
-  render() {
-    return (
-      <div>
-        <FlatButton label="Save File" onClick={ioDialog.saveFile}  />
-        <p><span>devi passare il nome del file</span>{this.props.epsg}</p>
-      </div>
-    );
-  }
-});
 
 
-export {LoadTab, SaveTab};
+export default LoadTab
 
 
 // <Tab label="Item Two" >

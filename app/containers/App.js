@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import TabsMenu from './tabs.js'
+import TabsMenu from './TabsMenu.js'
 
 
 export class App extends Component {
   render() {
     return (
-      <div>
-        <TabsMenu />
-      </div>
+        <TabsMenu />      
     );
   }
 }
