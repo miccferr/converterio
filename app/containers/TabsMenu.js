@@ -51,13 +51,21 @@ class TabsMenu extends React.Component {
   //     });
   // }
 
-  updateEPSG(val) {
-    console.log(this);
-      this.setState({
-          epsg: val
-      });
+  updateState(key,val) {
+    console.log(key +'+' +val);
+    let nuovoStato = this.openFile();
+     console.log(this);
+     console.log(nuovoStato);
+      this.state.inputFile=nuovoStato
   }
+  // updateState(val) {
+  //   console.log(this);
+  //     this.setState({
+  //         epsg: val
+  //     });
+  // }
 
+// CANCELLATO PER EIMINARE IL  RIFERIMENTO CIRCOLARE DENTRO A LOADTAB
   openFile() {
     dialog.showOpenDialog({
       properties: ['openFile', 'multiSelections'],
@@ -67,9 +75,11 @@ class TabsMenu extends React.Component {
         return;
       } else {
         var fileName = fileNames[0];
-        console.log(fileName);
-        this.state.inputFile = fileName;
-        console.log(this);
+        console.log('fileName is ' + fileName);
+        this.state.inputFile = fileName
+        // console.log(fileName);
+        // this.state.inputFile = fileName;
+        // console.log(this);
 
       }
     });
@@ -112,11 +122,11 @@ class TabsMenu extends React.Component {
     return (
           <Tabs>
             <Tab label="Load File" >
-              <LoadTab inputFile={this.state.inputFile} onChange={}/>
+              <LoadTab stato={this.state.inputFile} updateFun={this.openFile.bind(this)}/>
             </Tab>
             <Tab label="Reproject" >
               {/*TODO remove bind with arrow fun?*/}
-              <EPSGTab updateFun={this.updateEPSG.bind(this)}/>
+              <EPSGTab updateFun={this.updateState.bind(this)}/>
 
             </Tab>
             <Tab label="Save File" >

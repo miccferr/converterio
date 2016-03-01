@@ -4,7 +4,26 @@ import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 
 import geojsontoosm from 'geojsontoosm';
-import ioDialog from "./helpers/ioDialog";
+// import ioDialog from "./helpers/ioDialog";
+
+const remote = require('electron').remote;
+const dialog = remote.require('dialog');
+import * as fs from 'fs';
+
+import {default as writeConvertedFile} from './helpers/convert';
+
+let filtersListOpen = [{
+  name: 'GeoJSON',
+  extensions: ['geojson']
+}, {
+  name: 'ESRI Shapefile',
+  extensions: ['shp']
+}, {
+  name: 'OSM',
+  extensions: ['osm']
+}];
+
+let filtersListClose = filtersListOpen.slice(0, 2);
 
 
 const styles = {
@@ -16,22 +35,43 @@ const styles = {
   },
 };
 
-function handleActive(tab) {
-  alert(`A tab with this route property ${tab.props.route} was activated.`);
-}
 
-const LoadTab = React.createClass({
-getInitialState() { return ({text:''}) },
-onUpdate() {this.setState((value)=> {text:value}) },
-render() {
-return (
-      <div>
-        <FlatButton label="Load File" onClick={ioDialog.openFile}  />
-        <p><span>File loaded {  ioDialog.inputFileOpen }</span></p>
-      </div>
-    );
-  }
-});
+class LoadTab extends React.Component{
+
+  // getInitialState () { return ({text:''}) }
+  //
+  // onUpdate () {this.setState((value)=> {inputFile:value}) }
+
+  // openFile () {
+  //   dialog.showOpenDialog({
+  //     properties: ['openFile', 'multiSelections'],
+  //     filters: filtersListOpen,
+  //   }, function (fileNames) {
+  //     if (fileNames === undefined) {
+  //       return;
+  //     } else {
+  //       var fileName = fileNames[0];
+  //       console.log(fileName);
+  //       console.log(this);
+  //       return fileName
+  //       // this.props.updateFun(inputFile,fileName)
+  //
+  //       // this.inputFileOpen = fileName;
+  //       // this.onUpdate(fileName)
+  //
+  //     }
+  //   });
+  // }
+
+  render() {
+  return (
+        <div>
+          <FlatButton label="Load File" onClick={this.props.updateFun}  />
+          <p><span>File loaded {console.log(this.props.stato) } </span></p>
+        </div>
+      );
+    }
+};
 
 
 

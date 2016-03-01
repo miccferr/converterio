@@ -34,8 +34,9 @@ let ioDialog  = {
       } else {
         var fileName = fileNames[0];
         console.log(fileName);
-        this.inputFileOpen = fileName;
-        console.log(this.inputFileOpen);
+        console.log(this);
+        // this.inputFileOpen = fileName;
+        // this.setState({inputFile : fileName});
 
       }
     });
