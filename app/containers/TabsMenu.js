@@ -51,12 +51,11 @@ class TabsMenu extends React.Component {
   //     });
   // }
 
-  onUpdate(val) {
+  updateEPSG(val) {
     console.log(this);
       this.setState({
           epsg: val
       });
-
   }
 
   openFile() {
@@ -113,11 +112,11 @@ class TabsMenu extends React.Component {
     return (
           <Tabs>
             <Tab label="Load File" >
-              <LoadTab />
+              <LoadTab inputFile={this.state.inputFile} onChange={}/>
             </Tab>
             <Tab label="Reproject" >
               {/*TODO remove bind with arrow fun?*/}
-              <EPSGTab updateFun={this.onUpdate.bind(this)}/>
+              <EPSGTab updateFun={this.updateEPSG.bind(this)}/>
 
             </Tab>
             <Tab label="Save File" >
