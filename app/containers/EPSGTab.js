@@ -17,7 +17,6 @@ export default class EPSGTab extends React.Component {
         maxVisible={20}
         onOptionSelected={ (item) =>  this.props.updateFun(item) }
       />
-
     </div>
     )
   };

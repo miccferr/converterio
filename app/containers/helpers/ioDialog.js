@@ -20,8 +20,8 @@ let filtersListClose = filtersListOpen.slice(0, 2);
 
 let ioDialog  = {
 
-  inputFileOpen: 'nfsjdj',
-  testa: 'croce',
+  inputFileOpen: '',
+
   inputFileClosed: '',
 
   openFile: function () {

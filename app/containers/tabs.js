@@ -2,6 +2,7 @@ import React from 'react';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import {LoadTab, SaveTab} from './FsTab';
+import MyTab from './MyTab';
 import EPSGTab from './EPSGTab';
 
 const TabsMenu = React.createClass({
@@ -21,7 +22,7 @@ const TabsMenu = React.createClass({
     return (
           <Tabs>
             <Tab label="Load File" >
-              <LoadTab />
+              <MyTab />
             </Tab>
             <Tab label="Reproject" >
               <EPSGTab updateFun={this.onUpdate}/>
