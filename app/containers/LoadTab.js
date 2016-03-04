@@ -38,6 +38,8 @@ const styles = {
 
 class LoadTab extends React.Component{
 
+
+
   // getInitialState () { return ({text:''}) }
   //
   // onUpdate () {this.setState((value)=> {inputFile:value}) }
@@ -49,33 +51,51 @@ class LoadTab extends React.Component{
   }
 
   openFile () {
-    dialog.showOpenDialog({
-      properties: ['openFile', 'multiSelections'],
+  dialog.showOpenDialog({
+      properties: ['openFile'],
       filters: filtersListOpen,
-    }, function (fileNames) {
+      // using arrow fun to pass correct this into the callback
+    }, (fileNames) => {
       if (fileNames === undefined) {
         return;
       } else {
-        var fileName = fileNames[0];
-        console.log(fileName);
-        
-
-        return fileName
-        // this.props.updateFun(inputFile,fileName)
-
-        // this.inputFileOpen = fileName;
-        // this.onUpdate(fileName)
-
+        console.log(fileNames);
+        let fileName = fileNames[0];
+        console.log(fileNames[0].split("/").pop());
+        console.log(fileName.replace(/^.*[\\\/]/, ''));
+        console.log(this);
+        this.setState({inputFile:fileName})
       }
     });
+
   }
 
+  // loadMyFile(){
+  //   dialog.showOpenDialog({
+  //     properties: ['openFile', 'multiSelections'],
+  //     filters: filtersListOpen,
+  //   } , function (fileNames) {
+  //     if (fileNames === undefined) {
+  //       return;
+  //     } else {
+  //       var fileName = fileNames[0];
+  //
+  //       console.log(fileName);
+  //       console.log('this is in the callback' + this);
+  //       return fileNames
+  //
+  //     }
+  //   });
+  // }
+
   render() {
+
   return (
+
         <div>
-          <FlatButton label="Load File" onClick={this.updateState.bind(this)} cicci={this.openFile.bind(this)}  />
+          <FlatButton label="Load File" onClick={this.openFile.bind(this)}  />
           {/*<FlatButton label="Load File" onClick={()=> console.log(this.props.stato)}  />*/}
-          <p><span>File loaded {console.log(this.props.stato) } </span></p>
+          <p><span>File loaded {+ this.props } </span></p>
         </div>
       );
     }

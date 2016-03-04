@@ -51,12 +51,6 @@ class TabsMenu extends React.Component {
   //     });
   // }
 
-  updateState() {
-     console.log(this);
-     let nuovoStato = this.openFile();
-     console.log(nuovoStato);
-      this.state.inputFile=nuovoStato
-  }
   // updateState(val) {
   //   console.log(this);
   //     this.setState({
@@ -85,48 +79,56 @@ class TabsMenu extends React.Component {
   //   });
   // }
 
-  saveFile() {
-    dialog.showSaveDialog({
-      title: 'Save as',
-      filters: filtersListClose,
-    }, function (fileName, err) {
-      if (fileName === undefined) return;
-      // stores file name to be saved
-      this.inputFileClosed = fileName;
-      // stores crs to be saved
-      function saveCRS() {
-        // var crs = document.getElementById("crs")
-        // var crs = this.refs.myInput.state.entryValue;
-        var crs = this.refs
-        console.log(crs);
 
-        var number = +parseInt(crs);
-        // console.log(Number.isInteger(crs));
-        if (crs.value === "" || number != number) {
-          dialog.showErrorBox('Error','Missing CRS');
-        } else {
-          console.log('it is a number');
-          return number;
-        }
-
-      }
-      let crs = saveCRS()
-      console.log(writeConvertedFile);
-        // funzione gdal per convertire e trasformare.
-        // Uso gdal write al posto di fs writeFile per scrivere nuovo file
-      writeConvertedFile(this.inputFile, this.inputFileClosed, crs, err);
-    });
-  }
+// ultima roba aggiunta e poi commentata via
+  // updateState() {
+  //    console.log(this);
+  //    let nuovoStato = this.openFile();
+  //    console.log(nuovoStato);
+  //     this.state.inputFile=nuovoStato
+  // }
+  // saveFile() {
+  //   dialog.showSaveDialog({
+  //     title: 'Save as',
+  //     filters: filtersListClose,
+  //   }, function (fileName, err) {
+  //     if (fileName === undefined) return;
+  //     // stores file name to be saved
+  //     this.inputFileClosed = fileName;
+  //     // stores crs to be saved
+  //     function saveCRS() {
+  //       // var crs = document.getElementById("crs")
+  //       // var crs = this.refs.myInput.state.entryValue;
+  //       var crs = this.refs
+  //       console.log(crs);
+  //
+  //       var number = +parseInt(crs);
+  //       // console.log(Number.isInteger(crs));
+  //       if (crs.value === "" || number != number) {
+  //         dialog.showErrorBox('Error','Missing CRS');
+  //       } else {
+  //         console.log('it is a number');
+  //         return number;
+  //       }
+  //
+  //     }
+  //     let crs = saveCRS()
+  //     console.log(writeConvertedFile);
+  //       // funzione gdal per convertire e trasformare.
+  //       // Uso gdal write al posto di fs writeFile per scrivere nuovo file
+  //     writeConvertedFile(this.inputFile, this.inputFileClosed, crs, err);
+  //   });
+  // }
 
   render() {
     return (
           <Tabs>
             <Tab label="Load File" >
-              <LoadTab stato={this.state.inputFile} />
+              <LoadTab/>
             </Tab>
             <Tab label="Reproject" >
               {/*TODO remove bind with arrow fun?*/}
-              <EPSGTab updateFun={this.updateState.bind(this)}/>
+              {/*<EPSGTab updateFun={this.updateState.bind(this)}/>*/}
 
             </Tab>
             <Tab label="Save File" >
