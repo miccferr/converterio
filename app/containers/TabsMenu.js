@@ -120,16 +120,38 @@ class TabsMenu extends React.Component {
   //   });
   // }
 
+  dimmiStato(){
+    console.log(this.state);    
+  }
+
+  openFile () {
+  dialog.showOpenDialog({
+      properties: ['openFile'],
+      filters: filtersListOpen,
+      // using arrow fun to pass correct this into the callback
+    }, (fileNames) => {
+      if (fileNames === undefined) {
+        return;
+      } else {
+        let fileName = fileNames[0].replace(/^.*[\\\/]/, '');
+        this.setState({inputFile:fileName})
+      }
+    });
+
+  }
+
+
+
   render() {
     return (
           <Tabs>
             <Tab label="Load File" >
-              <LoadTab/>
+              <button onClick={this.dimmiStato.bind(this)}></button>
+              <LoadTab nomeCaricato={this.openFile.bind(this)}/>
             </Tab>
             <Tab label="Reproject" >
               {/*TODO remove bind with arrow fun?*/}
-              {/*<EPSGTab updateFun={this.updateState.bind(this)}/>*/}
-
+              <EPSGTab updateFun={this.updateState}/>
             </Tab>
             <Tab label="Save File" >
               <SaveTab epsg={this.state.epsg} />
