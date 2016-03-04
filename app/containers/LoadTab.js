@@ -58,7 +58,8 @@ class LoadTab extends React.Component{
       } else {
         var fileName = fileNames[0];
         console.log(fileName);
-        console.log(this);
+        
+
         return fileName
         // this.props.updateFun(inputFile,fileName)
 
@@ -72,7 +73,7 @@ class LoadTab extends React.Component{
   render() {
   return (
         <div>
-          <FlatButton label="Load File" onClick={this.updateState.bind(this)} openfile={this.openFile.bind(this)}  />
+          <FlatButton label="Load File" onClick={this.updateState.bind(this)} cicci={this.openFile.bind(this)}  />
           {/*<FlatButton label="Load File" onClick={()=> console.log(this.props.stato)}  />*/}
           <p><span>File loaded {console.log(this.props.stato) } </span></p>
         </div>
