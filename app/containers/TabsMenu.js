@@ -5,6 +5,7 @@ import LoadTab from './LoadTab';
 import SaveTab from './SaveTab';
 import EPSGTab from './EPSGTab';
 
+
 const remote = require('electron').remote;
 const dialog = remote.require('dialog');
 import * as fs from 'fs';
@@ -50,44 +51,40 @@ class TabsMenu extends React.Component {
         return;
       } else {
         let fileName = fileNames[0].replace(/^.*[\\\/]/, '');
-        this.setState({inputFile:fileName})
+        this.setState({inputFile:fileName, inputFilePath:fileNames[0]})
       }
     });
   }
   updateEPSG(val) {
-      this.setState({epsg:val})
+
+      this.setState({epsg:val[0].epsg_code})
   }
-  updateOutputFile(val) {
+  updateOutputFile() {
       dialog.showSaveDialog({
         title: 'Save as',
         filters: filtersListClose,
-      }, function (fileName, err) {
+      }, (fileName, err) => {
         if (fileName === undefined) return;
+        console.log(this);
+        // console.log(this.state.epsg);
         // stores file name to be saved
         this.inputFileClosed = fileName;
         // stores crs to be saved
-        function saveCRS() {
-          // var crs = document.getElementById("crs")
-          // var crs = this.refs.myInput.state.entryValue;
-          var crs = this.refs
+        let saveCRS = () => {
+          var crs = this.state.epsg
           console.log(crs);
-
           var number = +parseInt(crs);
-          // console.log(Number.isInteger(crs));
           if (crs.value === "" || number != number) {
             dialog.showErrorBox('Error','Missing CRS');
           } else {
             console.log('it is a number');
             return number;
           }
-
         }
         let crs = saveCRS()
-        console.log(writeConvertedFile);
-        console.log('this from save panel' + this);
           // funzione gdal per convertire e trasformare.
           // Uso gdal write al posto di fs writeFile per scrivere nuovo file
-        writeConvertedFile(this.inputFileOpen, this.inputFileClosed, crs, err);
+        writeConvertedFile(this.state.inputFilePath, this.inputFileClosed, crs, err);
       });
 
   }
@@ -108,7 +105,7 @@ class TabsMenu extends React.Component {
               <EPSGTab updateFun={this.updateEPSG.bind(this)}/>
             </Tab>
             <Tab label="Save File" >
-              <SaveTab updateFun={this.updateOutputFile.bind(this)} />
+              <SaveTab nomeDaSalvare={this.updateOutputFile.bind(this)}  />
             </Tab>
           </Tabs>
         )

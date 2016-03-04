@@ -92,8 +92,11 @@
     "webpack-target-electron-renderer": "^0.3.0"
   },
   "dependencies": {
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
     "electron-debug": "^0.5.1",
     "font-awesome": "^4.4.0",
+    "gdal": "^0.8.0",
     "geojsontoosm": "0.0.2",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",

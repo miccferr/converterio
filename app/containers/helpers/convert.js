@@ -3,7 +3,9 @@ import extension from './checkExtension.js';
 const remote = require('electron').remote;
 const dialog = remote.require('dialog');
 
-// import gdal from 'gdal';
+// const gdal = require('./../../../node_modules/gdal/lib/gdal.js');
+import * as gdal from 'gdal';
+
 
 export default function writeConvertedFile(infile, outfile, crs, err) {
   // check for errors in the first place

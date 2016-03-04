@@ -9,7 +9,7 @@ class LoadTab extends React.Component{
   return (
         <div>
           <FlatButton label="Load File" onClick={this.props.nomeCaricato}  />
-          <p><span>File loaded {+ this.props.nomeCaricato } </span></p>
+          <p><span>File loaded {+ this.props.nomeCaricato} </span></p>
         </div>
       );
     }

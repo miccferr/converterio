@@ -26,7 +26,7 @@ class SaveTab extends React.Component{
   render() {
     return (
       <div>
-        <FlatButton label="Save File" onClick={this.props.updateFun}  />
+        <FlatButton label="Save File" onClick={this.props.nomeDaSalvare}  />
         <p><span>devi passare il nome del file</span>{this.props.epsg}</p>
       </div>
     );
