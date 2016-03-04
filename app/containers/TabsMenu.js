@@ -35,7 +35,7 @@ const styles = {
 };
 
 class TabsMenu extends React.Component {
-// const TabsMenu = React.createClass({
+
   constructor(props) {
     super(props);
     this.state = {
@@ -45,83 +45,8 @@ class TabsMenu extends React.Component {
     };
   }
 
-  // getInitialState()  {
-  //     return ({
-  //         epsg: ''
-  //     });
-  // }
-
-  // updateState(val) {
-  //   console.log(this);
-  //     this.setState({
-  //         epsg: val
-  //     });
-  // }
-
-// CANCELLATO PER EIMINARE IL  RIFERIMENTO CIRCOLARE DENTRO A LOADTAB
-  // openFile() {
-  //   dialog.showOpenDialog({
-  //     properties: ['openFile', 'multiSelections'],
-  //     filters: filtersListOpen,
-  //   }, function (fileNames) {
-  //     if (fileNames === undefined) {
-  //       return;
-  //     } else {
-  //       var fileName = fileNames[0];
-  //       console.log('fileName is ' + fileName);
-  //       console.log(this);
-  //       this.state.inputFile = fileName
-  //       // console.log(fileName);
-  //       // this.state.inputFile = fileName;
-  //       // console.log(this);
-  //
-  //     }
-  //   });
-  // }
-
-
-// ultima roba aggiunta e poi commentata via
-  // updateState() {
-  //    console.log(this);
-  //    let nuovoStato = this.openFile();
-  //    console.log(nuovoStato);
-  //     this.state.inputFile=nuovoStato
-  // }
-  // saveFile() {
-  //   dialog.showSaveDialog({
-  //     title: 'Save as',
-  //     filters: filtersListClose,
-  //   }, function (fileName, err) {
-  //     if (fileName === undefined) return;
-  //     // stores file name to be saved
-  //     this.inputFileClosed = fileName;
-  //     // stores crs to be saved
-  //     function saveCRS() {
-  //       // var crs = document.getElementById("crs")
-  //       // var crs = this.refs.myInput.state.entryValue;
-  //       var crs = this.refs
-  //       console.log(crs);
-  //
-  //       var number = +parseInt(crs);
-  //       // console.log(Number.isInteger(crs));
-  //       if (crs.value === "" || number != number) {
-  //         dialog.showErrorBox('Error','Missing CRS');
-  //       } else {
-  //         console.log('it is a number');
-  //         return number;
-  //       }
-  //
-  //     }
-  //     let crs = saveCRS()
-  //     console.log(writeConvertedFile);
-  //       // funzione gdal per convertire e trasformare.
-  //       // Uso gdal write al posto di fs writeFile per scrivere nuovo file
-  //     writeConvertedFile(this.inputFile, this.inputFileClosed, crs, err);
-  //   });
-  // }
-
   dimmiStato(){
-    console.log(this.state);    
+    console.log(this.state);
   }
 
   openFile () {
@@ -137,10 +62,7 @@ class TabsMenu extends React.Component {
         this.setState({inputFile:fileName})
       }
     });
-
   }
-
-
 
   render() {
     return (
