@@ -84,6 +84,9 @@ class TabsMenu extends React.Component {
         let crs = saveCRS()
           // funzione gdal per convertire e trasformare.
           // Uso gdal write al posto di fs writeFile per scrivere nuovo file
+
+    
+
         writeConvertedFile(this.state.inputFilePath, this.inputFileClosed, crs, err);
       });
 

@@ -1,16 +1,22 @@
-import geojsontoosm from 'geojsontoosm'
+let gdal = require('gdal');
+// import geojsontoosm from 'geojsontoosm'
 import extension from './checkExtension.js';
 const remote = require('electron').remote;
 const dialog = remote.require('dialog');
 
 // const gdal = require('./../../../node_modules/gdal/lib/gdal.js');
-import * as gdal from 'gdal';
 
 
 export default function writeConvertedFile(infile, outfile, crs, err) {
+// console.log('errore in '+ err);
+// console.log(infile);
+//  console.log(outfile);
+//   console.log(crs);
+
   // check for errors in the first place
   if (!err) {
     var sm = gdal.SpatialReference.fromEPSG(3857);
+    let crs = 2065;
     function isCRSok(crs) {
       try {
 
@@ -19,15 +25,20 @@ export default function writeConvertedFile(infile, outfile, crs, err) {
         dialog.showErrorBox('Error', 'Wrong CRS');
       }
     }
-    var outCRS = isCRSok(crs)
-    var world = gdal.Geometry.fromWKT(
-      'POLYGON((-180 -85.0513, 180 -85.0513, 180 85.0513, -180 85.0513, -180 -85.0513))',
-      outCRS
-    );
-    var inDs = gdal.open(infile);
-    var returned = extension.checkExtension(outfile);
-    console.log(returned);
-    var outDs = gdal.open(outfile, 'w', returned);
+    let outCRS = isCRSok(crs)
+
+    // let world = gdal.Geometry.fromWKT(
+    //   'POLYGON((-180 -85.0513, 180 -85.0513, 180 85.0513, -180 85.0513, -180 -85.0513))',
+    //   outCRS
+    // );
+    let inDs = gdal.open(infile);
+
+//   inDs2.layers.get(0).features.forEach(function(feature) {
+//     console.log(feature.getGeometry().toJSON());
+// });
+    let returned = extension.checkExtension(outfile);
+    // console.log(extension);
+    let outDs = gdal.open(outfile, 'w', returned);
     var inLayer = inDs.layers.get(0);
     var outLayer = outDs.layers.create(inLayer.name, sm, inLayer.geomType);
     var toSm = new gdal.CoordinateTransformation(inLayer.srs, sm);
@@ -42,14 +53,14 @@ export default function writeConvertedFile(infile, outfile, crs, err) {
     });
 
     inLayer.features.forEach(function (feature, err) {
-      var projected = feature.clone();
-      var geom = projected.getGeometry();
+      let projected = feature.clone();
+      let geom = projected.getGeometry();
 
       // Originally null geometries are ok to pass through
       if (!geom) return outLayer.features.add(projected);
 
       // If we can crop features, do it
-      if (world) geom = geom.intersection(world);
+      // if (world) geom = geom.intersection(world);
 
       // If geom is null at this point, that means it got cropped out
       if (!geom) return;
@@ -60,7 +71,10 @@ export default function writeConvertedFile(infile, outfile, crs, err) {
       outLayer.features.add(projected);
     });
 
-    outLayer.flush();
+
+
+
+
 
     // print success message
     dialog.showMessageBox({
@@ -72,5 +86,6 @@ export default function writeConvertedFile(infile, outfile, crs, err) {
     dialog.showErrorBox("Error", 'File Save Error');
   }
 
+outLayer.flush();
 
 }
